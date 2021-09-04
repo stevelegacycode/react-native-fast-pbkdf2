@@ -1,7 +1,7 @@
 {
   "name": "react-native-pbkdf2",
   "version": "0.1.0",
-  "description": "Native PBKDF2 implementation",
+  "description": "PBKDF2 implementation",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",

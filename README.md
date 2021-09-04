@@ -1,6 +1,6 @@
 # react-native-pbkdf2
 
-Native PBKDF2 implementation
+PBKDF2 implementation
 
 ## Installation
 

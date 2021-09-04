@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 
 		5E555C0D2413F4C50049A1A2 /* Pbkdf2.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Pbkdf2.m */; };
-		F4FF95D7245B92E800C19C63 /*  Pbkdf2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /*  Pbkdf2.swift */; };
 
 /* End PBXBuildFile section */
 
@@ -28,9 +27,8 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libPbkdf2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPbkdf2.a; sourceTree = BUILT_PRODUCTS_DIR; };
 
+		B3E7B5881CC2AC0600A0062D /* Pbkdf2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pbkdf2.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* Pbkdf2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pbkdf2.m; sourceTree = "<group>"; };
-		F4FF95D5245B92E700C19C63 /* Pbkdf2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pbkdf2-Bridging-Header.h"; sourceTree = "<group>"; };
-		F4FF95D6245B92E800C19C63 /* Pbkdf2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pbkdf2.swift; sourceTree = "<group>"; };
 
 /* End PBXFileReference section */
 
@@ -57,9 +55,8 @@
 			isa = PBXGroup;
 			children = (
 
-				F4FF95D6245B92E800C19C63 /* Pbkdf2.swift */,
+				B3E7B5881CC2AC0600A0062D /* Pbkdf2.h */,
 				B3E7B5891CC2AC0600A0062D /* Pbkdf2.m */,
-				F4FF95D5245B92E700C19C63 /* Pbkdf2-Bridging-Header.h */,
 
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
@@ -123,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 
-				F4FF95D7245B92E800C19C63 /* Pbkdf2.swift in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* Pbkdf2.m in Sources */,
 
 			);
@@ -239,10 +235,6 @@
 				PRODUCT_NAME = Pbkdf2;
 				SKIP_INSTALL = YES;
 
-				SWIFT_OBJC_BRIDGING_HEADER = "Pbkdf2-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-
 			};
 			name = Debug;
 		};
@@ -259,9 +251,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Pbkdf2;
 				SKIP_INSTALL = YES;
-
-				SWIFT_OBJC_BRIDGING_HEADER = "Pbkdf2-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
 
 			};
 			name = Release;

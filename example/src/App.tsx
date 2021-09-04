@@ -4,10 +4,14 @@ import { StyleSheet, View, Text } from 'react-native';
 import Pbkdf2 from 'react-native-pbkdf2';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState<string | undefined>();
 
   React.useEffect(() => {
-    Pbkdf2.multiply(3, 7).then(setResult);
+    (async () => {
+      let res = await Pbkdf2.derive('password1', 'salt-1', 1, 16, 'sha-256');
+      console.warn(res);
+      setResult(res);
+    })();
   }, []);
 
   return (

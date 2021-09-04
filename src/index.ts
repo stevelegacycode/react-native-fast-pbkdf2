@@ -1,9 +1,9 @@
 import { NativeModules } from 'react-native';
 
-type Pbkdf2Type = {
-  multiply(a: number, b: number): Promise<number>;
+const implementation = {
+  derive(password: string, salt: string, iterations: number, keySize: number, hash: 'sha-1' | 'sha-256' | 'sha-512'): Promise<string> {
+    return NativeModules.Pbkdf2.derive(password, salt, iterations, keySize, hash);
+  }
 };
 
-const { Pbkdf2 } = NativeModules;
-
-export default Pbkdf2 as Pbkdf2Type;
+export default implementation;
