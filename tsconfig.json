@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-pbkdf2": ["./src/index"]
+      "react-native-fast-pbkdf2": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

@@ -1,28 +1,6 @@
 #import "Pbkdf2.h"
 #import <CommonCrypto/CommonCrypto.h>
 
-@implementation NSData (NSData_Conversion)
-
-#pragma mark - String Conversion
-- (NSString *)hexadecimalString {
-    /* Returns hexadecimal string of NSData. Empty string if data is empty.   */
-
-    const unsigned char *dataBuffer = (const unsigned char *)[self bytes];
-
-    if (!dataBuffer)
-        return [NSString string];
-
-    NSUInteger          dataLength  = [self length];
-    NSMutableString     *hexString  = [NSMutableString stringWithCapacity:(dataLength * 2)];
-
-    for (int i = 0; i < dataLength; ++i)
-        [hexString appendString:[NSString stringWithFormat:@"%02lx", (unsigned long)dataBuffer[i]]];
-
-    return [NSString stringWithString:hexString];
-}
-
-@end
-
 @implementation Pbkdf2
 
 RCT_EXPORT_MODULE()
@@ -30,16 +8,18 @@ RCT_EXPORT_MODULE()
 // Example method
 // See // https://reactnative.dev/docs/native-modules-ios
 RCT_REMAP_METHOD(derive,
-                 withPassword:(nonnull NSData*)password
-                 withSalt:(nonnull NSData*)salt
+                 withPassword:(nonnull NSString*)password
+                 withSalt:(nonnull NSString*)salt
                  withRounds:(nonnull NSNumber*)rounds
                  withKeyLength:(nonnull NSNumber*)keyLength
                  withHash:(nonnull NSString*)hash
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 {
-    NSMutableData *derivedKey = [NSMutableData dataWithLength: [keyLength unsignedIntValue]];
     
+    NSMutableData *derivedKey = [NSMutableData dataWithLength: [keyLength unsignedIntValue]];
+    NSData *passwordData = [[NSData alloc] initWithBase64EncodedString:password options:0];
+    NSData *saltData = [[NSData alloc] initWithBase64EncodedString:salt options:0];
     
     CCPseudoRandomAlgorithm prf = kCCPRFHmacAlgSHA1;
     if ([hash isEqualToString:@"sha-512"]) {
@@ -50,16 +30,16 @@ RCT_REMAP_METHOD(derive,
     }
 
     CCKeyDerivationPBKDF(kCCPBKDF2,               // algorithm
-                         password.bytes,           // password
-                         password.length,          // passwordLength
-                         salt.bytes,              // salt
-                         salt.length,             // saltLen
+                         passwordData.bytes,           // password
+                         passwordData.length,          // passwordLength
+                         saltData.bytes,              // salt
+                         saltData.length,             // saltLen
                          prf,       // PRF
                          [rounds unsignedIntValue],                  // rounds
                          derivedKey.mutableBytes, // derivedKey
                          derivedKey.length);      // derivedKeyLen
 
-    resolve([derivedKey hexadecimalString]);
+    resolve([derivedKey base64EncodedStringWithOptions:0]);
 }
 
 @end

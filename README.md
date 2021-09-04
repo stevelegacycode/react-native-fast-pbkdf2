@@ -1,17 +1,17 @@
-# react-native-pbkdf2
+# react-native-fast-pbkdf2
 
 PBKDF2 implementation
 
 ## Installation
 
 ```sh
-npm install react-native-pbkdf2
+npm install react-native-fast-pbkdf2
 ```
 
 ## Usage
 
 ```js
-import Pbkdf2 from "react-native-pbkdf2";
+import Pbkdf2 from "react-native-fast-pbkdf2";
 
 // ...
 
