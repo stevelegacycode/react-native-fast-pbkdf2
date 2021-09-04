@@ -1,5 +1,5 @@
 {
-  "name": "react-native-pbkdf2",
+  "name": "react-native-fast-pbkdf2",
   "version": "0.1.0",
   "description": "PBKDF2 implementation",
   "main": "lib/commonjs/index",
@@ -36,13 +36,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/ex3ndr/react-native-pbkdf2",
+  "repository": "https://github.com/ex3ndr/react-native-fast-pbkdf2",
   "author": "Steve Korshakov <steve@korshakov.com> (https://github.com/ex3ndr)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ex3ndr/react-native-pbkdf2/issues"
+    "url": "https://github.com/ex3ndr/react-native-fast-pbkdf2/issues"
   },
-  "homepage": "https://github.com/ex3ndr/react-native-pbkdf2#readme",
+  "homepage": "https://github.com/ex3ndr/react-native-fast-pbkdf2#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -80,8 +80,7 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint && yarn typescript"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "commitlint": {
