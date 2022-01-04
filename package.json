@@ -1,6 +1,6 @@
 {
   "name": "react-native-fast-pbkdf2",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "PBKDF2 implementation",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
