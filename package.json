@@ -69,7 +69,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "pbkdf2": "*"
   },
   "jest": {
     "preset": "react-native",

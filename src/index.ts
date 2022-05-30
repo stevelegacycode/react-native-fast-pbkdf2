@@ -11,7 +11,6 @@ const implementation = {
       .then(result => returnBuffer ? Buffer.from(result) : result);
   },
   deriveSync(password: string | Buffer, salt: string | Buffer, iterations: number, keySize: number, hash: 'sha-1' | 'sha-256' | 'sha-512'): string | Buffer {
-
     const isBufferPassword = Buffer.isBuffer(password)
     const isBufferSalt = Buffer.isBuffer(salt)
     const returnBuffer = isBufferPassword || isBufferSalt
@@ -24,7 +23,7 @@ const implementation = {
     // https://stackoverflow.com/a/50377644/12639496
     const haveRemoteDev = (typeof global.DedicatedWorkerGlobalScope) !== 'undefined';
     if (haveRemoteDev) {
-      const pbkdf2Sync = require('../../pbkdf2').pbkdf2Sync
+      const pbkdf2Sync = require('pbkdf2').pbkdf2Sync
       if (!pbkdf2Sync) throw Error('There\' no pbkdf2')
       return pbkdf2Sync(sPassword, sSalt, iterations, keySize, hash);
     }
