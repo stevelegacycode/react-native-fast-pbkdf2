@@ -31,8 +31,7 @@ public class Pbkdf2Module extends ReactContextBaseJavaModule {
     return NAME;
   }
 
-  @ReactMethod
-  public void derive(String password, String salt, int iterations, int keySize, String hash, Promise promise) {
+  private String pbkdf2(String password, String salt, int iterations, int keySize, String hash) {
     byte[] decodedPassword = android.util.Base64.decode(password, Base64.DEFAULT);
     byte[] decodedSalt = android.util.Base64.decode(salt, Base64.DEFAULT);
     Digest digest = new SHA1Digest();
@@ -44,6 +43,16 @@ public class Pbkdf2Module extends ReactContextBaseJavaModule {
     PKCS5S2ParametersGenerator gen = new PKCS5S2ParametersGenerator(digest);
     gen.init(decodedPassword, decodedSalt, iterations);
     byte[] key = ((KeyParameter) gen.generateDerivedParameters(keySize * 8)).getKey();
-    promise.resolve(Base64.encodeToString(key,Base64.DEFAULT));
+    return Base64.encodeToString(key,Base64.DEFAULT);
+  }
+
+  @ReactMethod
+  public void derive(String password, String salt, int iterations, int keySize, String hash, Promise promise) {
+    promise.resolve(pbkdf2(password, salt, iterations, keySize, hash));
+  }
+
+  @ReactMethod(isBlockingSynchronousMethod = true)
+  public String deriveSync(String password, String salt, int iterations, int keySize, String hash) {
+    return pbkdf2(password, salt, iterations, keySize, hash);
   }
 }
